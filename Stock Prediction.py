@@ -35,11 +35,11 @@ from keras import regularizers
 
 ##Import created contractions as a dictionary
 import sys
-sys.path.append('D:/emaildsml@gmail.com/Stock Prediction')
+sys.path.append('XXXXXX/Stock Prediction')
 import dictionary
 ###Read data
-dj = pd.read_csv("D:/emaildsml@gmail.com/Stock Prediction/DJIA_table.csv")
-news = pd.read_csv("D:/emaildsml@gmail.com/Stock Prediction/RedditNews.csv")
+dj = pd.read_csv("XXXXXX/DJIA_table.csv")
+news = pd.read_csv("XXXXXX/RedditNews.csv")
 
 # Compare the number of unique dates. We want matching values.
 print(len(set(dj.Date)))
@@ -163,7 +163,7 @@ print("Size of Vocabulary:", len(word_counts))
 
 # Load GloVe's embeddings
 embeddings_index = {}
-with open('D:/emaildsml@gmail.com/Stock Prediction/glove.6B.100d.txt', encoding='utf-8') as f:
+with open('XXXXXX/glove.6B.100d.txt', encoding='utf-8') as f:
     for line in f:
         values = line.split(' ')
         word = values[0]
@@ -429,7 +429,7 @@ for deeper in [False]:
                 print("Current model: Deeper={}, Wider={}, LR={}, Dropout={}".format(
                     deeper,wider,learning_rate,dropout))
                 print()
-                save_best_weights = 'D:/emaildsml@gmail.com/Stock Prediction/question_pairs_weights_deeper={}_wider={}_lr={}_dropout={}.h5'.format(
+                save_best_weights = 'XXXXX/question_pairs_weights_deeper={}_wider={}_lr={}_dropout={}.h5'.format(
                     deeper,wider,learning_rate,dropout)
 
                 callbacks = [ModelCheckpoint(save_best_weights, verbose=1, monitor='val_loss', save_best_only=True),
@@ -446,7 +446,7 @@ for deeper in [False]:
                                     callbacks = callbacks)
 
 ##Save model
-#model.save_weights("D:/emaildsml@gmail.com/Stock Prediction/save_best_weights.h5")                
+#model.save_weights("XXXXXX/save_best_weights.h5")                
 
 # Make predictions with the best weights
 deeper=False
@@ -455,7 +455,7 @@ dropout=0.3
 learning_Rate = 0.001
 # Need to rebuild model in case it is different from the model that was trained most recently.
 model = build_model()
-model.load_weights('D:/emaildsml@gmail.com/Stock Prediction/question_pairs_weights_deeper=False_wider=True_lr=0.001_dropout=0.3.h5')
+model.load_weights('XXXXX/question_pairs_weights_deeper=False_wider=True_lr=0.001_dropout=0.3.h5')
 predictions = model.predict([x_test,x_test], verbose = True)
 
 # Compare testing loss to training and validating loss
